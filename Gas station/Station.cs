@@ -42,17 +42,20 @@ namespace Gas_station
                 currentFuel += RateDispense;
                 SessionDispensed += RateDispense;
                 fuelComparison = $"{currentFuel}/{maximumFuel}L";
-
                 //Edit row in fuel Table that matches fuel type with new value plus previous one.
                 foreach (DataRow dr in fuelTable.Rows)
                 {
                     if (dr["fuelType"].ToString() == fuelType)
                     {
-                        var previousAmount = double.Parse(dr["dispensed"].ToString());
-                        dr["dispensed"] = $"{previousAmount + RateDispense}L";
+                        lock (fuelTable)
+                        {
+                            var previousAmount = double.Parse(dr["dispensed"].ToString());
+                            dr["dispensed"] = $"{previousAmount + RateDispense}";
+                        }
+                        
                     }
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(1000); 
             }
             progressbar.Invoke((MethodInvoker)(() => progressbar.Minimum = 0));
             progressbar.Invoke((MethodInvoker)(() => progressbar.Value = 0));

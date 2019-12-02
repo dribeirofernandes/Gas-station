@@ -51,8 +51,9 @@ namespace Gas_station
 
             //Update top counters
             lQueue.Text = $"Queue - {queue.Count}";
-            lPoundsGenerated.Text = $"Pounds Generated: £{(double.Parse(Regex.Match(lTotalDispensed.Text, @"-?\d+(?:\.\d+)?").Value) * 1.19).ToString("n1")}";
-            lCommission.Text = $"Commission: £{(double.Parse(Regex.Match(lPoundsGenerated.Text, @"-?\d+(?:\.\d+)?").Value) * 0.01).ToString()}";
+            lPoundsGenerated.Text = $"Pounds Generated: £{(double.Parse(Regex.Match(lTotalDispensed.Text, @"-?\d+(?:\.\d+)?").Value) * 1.19).ToString()}";
+            string pdsGenerated = Regex.Match(lPoundsGenerated.Text, @"-?\d+(?:\.\d+)?").Value;
+            lCommission.Text = $"Commission: £{(double.Parse(pdsGenerated) * 0.01).ToString()}";
             lVehiclesServed.Text = $"Vehicles Serviced: {vehicleID}";
 
             //Update transactions datagridView
