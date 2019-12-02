@@ -35,7 +35,7 @@ namespace Gas_station
             progressbar.Invoke((MethodInvoker)(() => progressbar.Maximum = (int)maximumFuel));
             progressbar.Invoke((MethodInvoker)(() => progressbar.Minimum = (int)currentFuel));
 
-            while (currentFuel <= maximumFuel)
+            while (currentFuel < maximumFuel)
             {
                 totalDispensed.Invoke((MethodInvoker)(() => totalDispensed.Text = $"Total Dispensed: {(double.Parse(Regex.Match(totalDispensed.Text, @"-?\d+(?:\.\d+)?").Value) + RateDispense).ToString()}"));
                 progressbar.Invoke((MethodInvoker)(() => progressbar.Value = (int)currentFuel));
@@ -45,14 +45,13 @@ namespace Gas_station
                 //Edit row in fuel Table that matches fuel type with new value plus previous one.
                 foreach (DataRow dr in fuelTable.Rows)
                 {
-                    if (dr["fuelType"].ToString() == fuelType)
+                    lock (fuelTable)
                     {
-                        lock (fuelTable)
+                        if (dr["fuelType"].ToString() == fuelType)
                         {
                             var previousAmount = double.Parse(dr["dispensed"].ToString());
                             dr["dispensed"] = $"{previousAmount + RateDispense}";
                         }
-                        
                     }
                 }
                 Thread.Sleep(1000); 
