@@ -213,6 +213,9 @@
             // 
             // queuePanel
             // 
+            this.queuePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.queuePanel.AutoSize = true;
             this.queuePanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.queuePanel.Controls.Add(this.queueList);
             this.queuePanel.Location = new System.Drawing.Point(20, 139);
@@ -223,8 +226,11 @@
             // 
             // queueList
             // 
+            this.queueList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.queueList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.queueList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.queueList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.queueList.Location = new System.Drawing.Point(0, 0);
             this.queueList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.queueList.Multiline = true;
@@ -899,6 +905,9 @@
             // 
             // btnTransactions
             // 
+            this.btnTransactions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTransactions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(142)))), ((int)(((byte)(205)))));
             this.btnTransactions.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(142)))), ((int)(((byte)(205)))));
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -915,6 +924,9 @@
             // 
             // transactionsPanel
             // 
+            this.transactionsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.transactionsPanel.Controls.Add(this.dgTransactions);
             this.transactionsPanel.Location = new System.Drawing.Point(330, 137);
             this.transactionsPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -987,13 +999,16 @@
             // 
             // fuelPanel
             // 
+            this.fuelPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.fuelPanel.AutoSize = true;
             this.fuelPanel.BackColor = System.Drawing.SystemColors.Window;
             this.fuelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fuelPanel.Controls.Add(this.dgFuel);
             this.fuelPanel.Location = new System.Drawing.Point(20, 340);
             this.fuelPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fuelPanel.Name = "fuelPanel";
-            this.fuelPanel.Size = new System.Drawing.Size(274, 140);
+            this.fuelPanel.Size = new System.Drawing.Size(274, 231);
             this.fuelPanel.TabIndex = 37;
             // 
             // dgFuel
@@ -1013,7 +1028,7 @@
             this.dgFuel.ReadOnly = true;
             this.dgFuel.RowHeadersVisible = false;
             this.dgFuel.RowTemplate.Height = 23;
-            this.dgFuel.Size = new System.Drawing.Size(272, 138);
+            this.dgFuel.Size = new System.Drawing.Size(272, 229);
             this.dgFuel.TabIndex = 0;
             this.dgFuel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -1062,7 +1077,6 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.queuePanel);
             this.Controls.Add(this.Pump1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1186,7 +1200,6 @@
         private System.Windows.Forms.Label lCommission;
         private System.Windows.Forms.Label lPoundsGenerated;
         private System.Windows.Forms.Label lQueue;
-        private System.Windows.Forms.Button btnTransactions;
         private System.Windows.Forms.Panel transactionsPanel;
         private System.Windows.Forms.DataGridView dgTransactions;
         private System.Windows.Forms.Panel fuelPanel;
@@ -1198,5 +1211,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vehicleModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn litersDispensed;
         private System.Windows.Forms.DataGridViewTextBoxColumn payment;
+        private System.Windows.Forms.Button btnTransactions;
     }
 }

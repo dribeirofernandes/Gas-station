@@ -35,13 +35,20 @@ namespace Gas_station
             progressbar.Invoke((MethodInvoker)(() => progressbar.Maximum = (int)maximumFuel));
             progressbar.Invoke((MethodInvoker)(() => progressbar.Minimum = (int)currentFuel));
 
-            while (currentFuel < maximumFuel)
+            do
             {
                 totalDispensed.Invoke((MethodInvoker)(() => totalDispensed.Text = $"Total Dispensed: {(double.Parse(Regex.Match(totalDispensed.Text, @"-?\d+(?:\.\d+)?").Value) + RateDispense).ToString()}"));
                 progressbar.Invoke((MethodInvoker)(() => progressbar.Value = (int)currentFuel));
                 currentFuel += RateDispense;
                 SessionDispensed += RateDispense;
+                if(currentFuel > maximumFuel)
+                {
+                    var difference = currentFuel - maximumFuel;
+                    currentFuel -= difference;
+                    SessionDispensed -= difference;
+                }
                 fuelComparison = $"{currentFuel}/{maximumFuel}L";
+
                 //Edit row in fuel Table that matches fuel type with new value plus previous one.
                 foreach (DataRow dr in fuelTable.Rows)
                 {
@@ -49,13 +56,23 @@ namespace Gas_station
                     {
                         if (dr["fuelType"].ToString() == fuelType)
                         {
-                            var previousAmount = double.Parse(dr["dispensed"].ToString());
-                            dr["dispensed"] = $"{previousAmount + RateDispense}";
+                            double previousAmount;
+                            if (currentFuel > maximumFuel)
+                            {
+                                var difference = (currentFuel - maximumFuel);
+                                previousAmount = double.Parse(dr["dispensed"].ToString());
+                                dr["dispensed"] = $"{(previousAmount + RateDispense) - difference}";
+                            }
+                            else
+                            {
+                                previousAmount = double.Parse(dr["dispensed"].ToString());
+                                dr["dispensed"] = $"{previousAmount + RateDispense}";
+                            }
                         }
                     }
                 }
                 Thread.Sleep(1000); 
-            }
+            }while(currentFuel < maximumFuel);
             progressbar.Invoke((MethodInvoker)(() => progressbar.Minimum = 0));
             progressbar.Invoke((MethodInvoker)(() => progressbar.Value = 0));
             transactionsTable.Rows.Add(new object[] { $"{vehicle.VehicleType}", $"{vehicle.FuelType}", $"{vehicle.ModelName}", $"{SessionDispensed}L", $"£{SessionDispensed * Fuelprice}" });
