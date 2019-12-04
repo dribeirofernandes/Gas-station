@@ -64,10 +64,8 @@
             this.progressBar8 = new System.Windows.Forms.ProgressBar();
             this.progressBar9 = new System.Windows.Forms.ProgressBar();
             this.topPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Trademark = new System.Windows.Forms.Label();
             this.quitPanel = new System.Windows.Forms.Panel();
-            this.btnQuit = new System.Windows.Forms.PictureBox();
             this.lVehiclesServed = new System.Windows.Forms.Label();
             this.lCommission = new System.Windows.Forms.Label();
             this.lPoundsGenerated = new System.Windows.Forms.Label();
@@ -111,6 +109,8 @@
             this.vehicleModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.litersDispensed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnQuit = new System.Windows.Forms.PictureBox();
             this.Pump1.SuspendLayout();
             this.NumberPanel1.SuspendLayout();
             this.Pump2.SuspendLayout();
@@ -120,9 +120,7 @@
             this.Pump3.SuspendLayout();
             this.NumberPanel3.SuspendLayout();
             this.topPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.quitPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).BeginInit();
             this.transactionsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTransactions)).BeginInit();
@@ -138,6 +136,8 @@
             this.Pump5.SuspendLayout();
             this.NumberPanel6.SuspendLayout();
             this.Pump6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -153,6 +153,7 @@
             // UpdateInterface
             // 
             this.UpdateInterface.Enabled = true;
+            this.UpdateInterface.Interval = 1;
             this.UpdateInterface.Tick += new System.EventHandler(this.UpdateInterface_Tick);
             // 
             // Pump1
@@ -499,16 +500,6 @@
             this.topPanel.Size = new System.Drawing.Size(874, 47);
             this.topPanel.TabIndex = 34;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Gas_station.Properties.Resources.LOGOg;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // Trademark
             // 
             this.Trademark.AutoSize = true;
@@ -532,19 +523,6 @@
             this.quitPanel.Name = "quitPanel";
             this.quitPanel.Size = new System.Drawing.Size(3800, 39);
             this.quitPanel.TabIndex = 0;
-            // 
-            // btnQuit
-            // 
-            this.btnQuit.Image = global::Gas_station.Properties.Resources.quitBtn;
-            this.btnQuit.Location = new System.Drawing.Point(724, 0);
-            this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(30, 23);
-            this.btnQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnQuit.TabIndex = 5;
-            this.btnQuit.TabStop = false;
-            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
-            this.btnQuit.MouseLeave += new System.EventHandler(this.btnQuit_MouseLeave);
-            this.btnQuit.MouseHover += new System.EventHandler(this.btnQuit_MouseHover);
             // 
             // lVehiclesServed
             // 
@@ -1033,6 +1011,29 @@
             this.payment.Name = "payment";
             this.payment.ReadOnly = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Gas_station.Properties.Resources.LOGOg;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.Image = global::Gas_station.Properties.Resources.quitBtn;
+            this.btnQuit.Location = new System.Drawing.Point(724, 0);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(30, 23);
+            this.btnQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnQuit.TabIndex = 5;
+            this.btnQuit.TabStop = false;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            this.btnQuit.MouseLeave += new System.EventHandler(this.btnQuit_MouseLeave);
+            this.btnQuit.MouseHover += new System.EventHandler(this.btnQuit_MouseHover);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1081,10 +1082,8 @@
             this.NumberPanel3.PerformLayout();
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.quitPanel.ResumeLayout(false);
             this.quitPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).EndInit();
             this.transactionsPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgTransactions)).EndInit();
@@ -1111,6 +1110,8 @@
             this.NumberPanel6.PerformLayout();
             this.Pump6.ResumeLayout(false);
             this.Pump6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
