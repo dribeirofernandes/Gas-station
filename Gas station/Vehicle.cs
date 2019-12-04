@@ -26,28 +26,27 @@ namespace Gas_station
         {
             ID = id;
             VehicleType = vehicleType;
-            var random = new Random();
             switch (vehicleType.ToUpper())
             {
                 case "CAR":
-                    ModelName = modelNames[0, random.Next(0, 5)];
-                    FuelType = FuelTypes[random.Next(0, 3)];
+                    ModelName = modelNames[0, new Random().Next(5)];
+                    FuelType = FuelTypes[new Random().Next(3)];
                     FuelCapacity = 40;
-                    CurrentFuel = random.Next(0, FuelCapacity / 4);
+                    CurrentFuel = new Random().Next(FuelCapacity / 4);
                     break;
 
                 case "VAN":
-                    ModelName = modelNames[1, random.Next(0, 5)];
-                    FuelType = FuelTypes[random.Next(1, 3)];
+                    ModelName = modelNames[1, new Random().Next(5)];
+                    FuelType = FuelTypes[new Random().Next(1, 3)];
                     FuelCapacity = 80;
-                    CurrentFuel = random.Next(0, FuelCapacity / 4);
+                    CurrentFuel = new Random().Next(0, FuelCapacity / 4);
                     break;
 
                 case "HGV":
-                    ModelName = modelNames[2, random.Next(0, 5)];
+                    ModelName = modelNames[2, new Random().Next(5)];
                     FuelType = FuelTypes[2];
                     FuelCapacity = 150;
-                    CurrentFuel = random.Next(0, FuelCapacity / 4);
+                    CurrentFuel = new Random().Next(FuelCapacity / 4);
                     break;
 
             }

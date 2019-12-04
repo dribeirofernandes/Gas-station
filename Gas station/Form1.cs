@@ -59,6 +59,8 @@ namespace Gas_station
             //Update transactions datagridView
             dgTransactions.DataSource = transactions;
             dgTransactions.Update();
+            dgTransactions.RowTemplate.Height = 22;
+            dgTransactions.ScrollBars = ScrollBars.Vertical;
 
             //Update fuel datagridview
             dgFuel.DataSource = fuelDispensed;
@@ -160,7 +162,7 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[0].StartPump(queue, transactions, fuelDispensed, progressBar1, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(300);
+                            Thread.Sleep(50);
                         }
                         break;
                     case 1:
@@ -168,7 +170,7 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[1].StartPump(queue, transactions, fuelDispensed, progressBar2, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(100);
+                            Thread.Sleep(50);
                         }
                         break;
                     case 2:
@@ -176,7 +178,7 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[2].StartPump(queue, transactions, fuelDispensed, progressBar3, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(300);
+                            Thread.Sleep(50);
                         }
                         break;
                     case 3:
@@ -184,7 +186,7 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[3].StartPump(queue, transactions, fuelDispensed, progressBar4, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(100);
+                            Thread.Sleep(50);
                         }
                         break;
                     case 4:
@@ -192,7 +194,7 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[4].StartPump(queue, transactions, fuelDispensed, progressBar5, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(300);
+                            Thread.Sleep(50);
                         }
                         break;
                     case 5:
@@ -200,7 +202,7 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[5].StartPump(queue, transactions, fuelDispensed, progressBar6, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(100);
+                            Thread.Sleep(50);
                         }
                         break;
                     case 6:
@@ -208,7 +210,8 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[6].StartPump(queue, transactions, fuelDispensed, progressBar7, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(300);
+                            Thread.Sleep(50);
+
                         }
                         break;
                     case 7:
@@ -216,7 +219,8 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[7].StartPump(queue, transactions, fuelDispensed, progressBar8, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(100);
+                            Thread.Sleep(50);
+
                         }
                         break;
                     case 8:
@@ -224,7 +228,8 @@ namespace Gas_station
                         {
                             var thread = new Thread(() => pump[8].StartPump(queue, transactions, fuelDispensed, progressBar9, lTotalDispensed));
                             thread.Start();
-                            Thread.Sleep(100);
+                            Thread.Sleep(50);
+
                         }
                         break;
                 }
@@ -236,11 +241,13 @@ namespace Gas_station
             if (!transactionsPanel.Visible)
             {
                 btnTransactions.Text = "Return";
+                btnUpdateTransactions.Show();
                 transactionsPanel.Visible = true;
             }
             else
             {
                 btnTransactions.Text = "Transations to date";
+                btnUpdateTransactions.Hide();
                 transactionsPanel.Visible = false;
             }
         }
@@ -248,6 +255,39 @@ namespace Gas_station
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void progressBar2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdateTransactions_Click(object sender, EventArgs e)
+        {
+            dgTransactions.Refresh();
+            dgTransactions.Update();
+            dgTransactions.ScrollBars = ScrollBars.Vertical;
+        }
+
+        private void dgTransactions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.quitBtn;
+
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.quitButton;
         }
     }
 }
