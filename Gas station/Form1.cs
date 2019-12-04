@@ -15,6 +15,7 @@ namespace Gas_station
     public partial class Form1 : Form
     {
         List<Vehicle> queue = new List<Vehicle>();
+        ProgressBar[] progressB = new ProgressBar[9];
         DataTable transactions = new DataTable();
         DataTable fuelDispensed = new DataTable();
         Station[] pump = new Station[9];
@@ -36,9 +37,82 @@ namespace Gas_station
             fuelDispensed.Rows.Add(new Object[] { "Diesel", "0" });
             fuelDispensed.Rows.Add(new Object[] { "LPG", "0" });
 
+            //Set transactions panel height
+            transactionsPanel.Height = 335;
+
             //Initialize pump objects
             for (int i = 0; i < pump.Length; i++)
                 pump[i] = new Station();
+
+            //ProgressBar Array
+            progressB[0] = progressBar1;
+            progressB[1] = progressBar2;
+            progressB[2] = progressBar3;
+            progressB[3] = progressBar4;
+            progressB[4] = progressBar5;
+            progressB[5] = progressBar6;
+            progressB[6] = progressBar7;
+            progressB[7] = progressBar8;
+            progressB[8] = progressBar9;
+
+        }
+
+        private void SpawnVehicle_Tick(object sender, EventArgs e)
+        {
+            if (queue.Count < 5)
+            {
+                switch (new Random().Next(0, 3))
+                {
+                    case 0:
+                        queue.Add(new Vehicle("CAR", vehicleID));
+                        vehicleID++;
+                        break;
+                    case 1:
+                        queue.Add(new Vehicle("VAN", vehicleID));
+                        vehicleID++;
+                        break;
+                    case 2:
+                        queue.Add(new Vehicle("HGV", vehicleID));
+                        vehicleID++;
+                        break;
+                }
+            }
+        }
+
+        private void AssignPump_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < pump.Length; i++)
+            {
+                if (pump[i].Availability == true && queue.Count > 0)
+                {
+                    var thread = new Thread(() => pump[i].StartPump(queue, transactions, fuelDispensed, progressB[i], lTotalDispensed));
+                    thread.Start();
+                    Thread.Sleep(50);
+                }
+            }
+        }
+
+        private void btnTransactions_Click(object sender, EventArgs e)
+        {
+            if (!transactionsPanel.Visible)
+            {
+                btnTransactions.Text = "Return";
+                btnUpdateTransactions.Show();
+                transactionsPanel.Visible = true;
+            }
+            else
+            {
+                btnTransactions.Text = "Transations to date";
+                btnUpdateTransactions.Hide();
+                transactionsPanel.Visible = false;
+            }
+        }
+
+        private void btnUpdateTransactions_Click(object sender, EventArgs e)
+        {
+            dgTransactions.Refresh();
+            dgTransactions.Update();
+            dgTransactions.ScrollBars = ScrollBars.Vertical;
         }
 
         private void UpdateInterface_Tick(object sender, EventArgs e)
@@ -47,7 +121,7 @@ namespace Gas_station
             //Update queue list
             queueList.Text = "";
             foreach (Vehicle v in queue)
-                queueList.Text += $"{ v.ModelName}{Environment.NewLine}";
+                queueList.Text += $"{v.ModelName}{Environment.NewLine}";
 
             //Update top counters
             lQueue.Text = $"Queue - {queue.Count}";
@@ -60,6 +134,7 @@ namespace Gas_station
             dgTransactions.DataSource = transactions;
             dgTransactions.Update();
             dgTransactions.RowTemplate.Height = 22;
+            dgTransactions.RowTemplate.Height = 23;
             dgTransactions.ScrollBars = ScrollBars.Vertical;
 
             //Update fuel datagridview
@@ -129,165 +204,20 @@ namespace Gas_station
 
         }
 
-        private void SpawnVehicle_Tick(object sender, EventArgs e)
-        {
-            if (queue.Count < 5)
-            {
-                switch (new Random().Next(0, 3))
-                {
-                    case 0:
-                        queue.Add(new Vehicle("CAR", vehicleID));
-                        vehicleID++;
-                        break;
-                    case 1:
-                        queue.Add(new Vehicle("VAN", vehicleID));
-                        vehicleID++;
-                        break;
-                    case 2:
-                        queue.Add(new Vehicle("HGV", vehicleID));
-                        vehicleID++;
-                        break;
-                }
-            }
-        }
-
-        private void AssignPump_Tick(object sender, EventArgs e)
-        {
-            for (int i = 0; i < pump.Length; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[0].StartPump(queue, transactions, fuelDispensed, progressBar1, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-                        }
-                        break;
-                    case 1:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[1].StartPump(queue, transactions, fuelDispensed, progressBar2, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-                        }
-                        break;
-                    case 2:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[2].StartPump(queue, transactions, fuelDispensed, progressBar3, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-                        }
-                        break;
-                    case 3:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[3].StartPump(queue, transactions, fuelDispensed, progressBar4, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-                        }
-                        break;
-                    case 4:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[4].StartPump(queue, transactions, fuelDispensed, progressBar5, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-                        }
-                        break;
-                    case 5:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[5].StartPump(queue, transactions, fuelDispensed, progressBar6, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-                        }
-                        break;
-                    case 6:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[6].StartPump(queue, transactions, fuelDispensed, progressBar7, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-
-                        }
-                        break;
-                    case 7:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[7].StartPump(queue, transactions, fuelDispensed, progressBar8, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-
-                        }
-                        break;
-                    case 8:
-                        if (pump[i].Availability == true && queue.Count > 0)
-                        {
-                            var thread = new Thread(() => pump[8].StartPump(queue, transactions, fuelDispensed, progressBar9, lTotalDispensed));
-                            thread.Start();
-                            Thread.Sleep(50);
-
-                        }
-                        break;
-                }
-            }
-        }
-
-        private void btnTransactions_Click(object sender, EventArgs e)
-        {
-            if (!transactionsPanel.Visible)
-            {
-                btnTransactions.Text = "Return";
-                btnUpdateTransactions.Show();
-                transactionsPanel.Visible = true;
-            }
-            else
-            {
-                btnTransactions.Text = "Transations to date";
-                btnUpdateTransactions.Hide();
-                transactionsPanel.Visible = false;
-            }
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void progressBar2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnUpdateTransactions_Click(object sender, EventArgs e)
-        {
-            dgTransactions.Refresh();
-            dgTransactions.Update();
-            dgTransactions.ScrollBars = ScrollBars.Vertical;
-        }
-
-        private void dgTransactions_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnQuit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
 
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        private void btnQuit_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox1.Image = Properties.Resources.quitBtn;
+            btnQuit.Image = Properties.Resources.quitBtn;
 
         }
 
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        private void btnQuit_MouseHover(object sender, EventArgs e)
         {
-            pictureBox1.Image = Properties.Resources.quitButton;
+            btnQuit.Image = Properties.Resources.quitButton;
         }
     }
 }

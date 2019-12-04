@@ -97,5 +97,20 @@
   <ItemGroup>
     <None Include="Resources\quitBtn.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9095d007-be70-4da2-86d5-0e65241e7921_200x200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGOg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
