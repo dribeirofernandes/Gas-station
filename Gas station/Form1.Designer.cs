@@ -1008,7 +1008,7 @@
             this.fuelPanel.Location = new System.Drawing.Point(20, 340);
             this.fuelPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.fuelPanel.Name = "fuelPanel";
-            this.fuelPanel.Size = new System.Drawing.Size(274, 140);
+            this.fuelPanel.Size = new System.Drawing.Size(274, 231);
             this.fuelPanel.TabIndex = 37;
             // 
             // dgFuel
@@ -1028,7 +1028,7 @@
             this.dgFuel.ReadOnly = true;
             this.dgFuel.RowHeadersVisible = false;
             this.dgFuel.RowTemplate.Height = 23;
-            this.dgFuel.Size = new System.Drawing.Size(272, 138);
+            this.dgFuel.Size = new System.Drawing.Size(272, 229);
             this.dgFuel.TabIndex = 0;
             this.dgFuel.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
