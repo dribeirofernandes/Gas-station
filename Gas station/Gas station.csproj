@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{07B27D58-B4D1-4D34-879C-8DCA76D34732}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Gas_station</RootNamespace>
     <AssemblyName>Gas station</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

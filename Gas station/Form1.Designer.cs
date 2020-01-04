@@ -64,8 +64,10 @@
             this.progressBar8 = new System.Windows.Forms.ProgressBar();
             this.progressBar9 = new System.Windows.Forms.ProgressBar();
             this.topPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Trademark = new System.Windows.Forms.Label();
             this.quitPanel = new System.Windows.Forms.Panel();
+            this.btnQuit = new System.Windows.Forms.PictureBox();
             this.lVehiclesServed = new System.Windows.Forms.Label();
             this.lCommission = new System.Windows.Forms.Label();
             this.lPoundsGenerated = new System.Windows.Forms.Label();
@@ -74,6 +76,11 @@
             this.transactionsPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgTransactions = new System.Windows.Forms.DataGridView();
+            this.vehicleType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fuelTypes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehicleModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.litersDispensed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdateTransactions = new System.Windows.Forms.Button();
             this.dgFuel = new System.Windows.Forms.DataGridView();
             this.fuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,13 +111,7 @@
             this.vehicleName6 = new System.Windows.Forms.Label();
             this.CurrentFuel6 = new System.Windows.Forms.Label();
             this.Pump6 = new System.Windows.Forms.Panel();
-            this.vehicleType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelTypes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vehicleModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.litersDispensed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnQuit = new System.Windows.Forms.PictureBox();
+            this.UpdateCLI = new System.Windows.Forms.Timer(this.components);
             this.Pump1.SuspendLayout();
             this.NumberPanel1.SuspendLayout();
             this.Pump2.SuspendLayout();
@@ -120,7 +121,9 @@
             this.Pump3.SuspendLayout();
             this.NumberPanel3.SuspendLayout();
             this.topPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.quitPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).BeginInit();
             this.transactionsPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTransactions)).BeginInit();
@@ -136,8 +139,6 @@
             this.Pump5.SuspendLayout();
             this.NumberPanel6.SuspendLayout();
             this.Pump6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -500,6 +501,16 @@
             this.topPanel.Size = new System.Drawing.Size(874, 47);
             this.topPanel.TabIndex = 34;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Gas_station.Properties.Resources.LOGOg;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // Trademark
             // 
             this.Trademark.AutoSize = true;
@@ -523,6 +534,19 @@
             this.quitPanel.Name = "quitPanel";
             this.quitPanel.Size = new System.Drawing.Size(3800, 39);
             this.quitPanel.TabIndex = 0;
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.Image = global::Gas_station.Properties.Resources.quitBtn;
+            this.btnQuit.Location = new System.Drawing.Point(724, 0);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(30, 23);
+            this.btnQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnQuit.TabIndex = 5;
+            this.btnQuit.TabStop = false;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            this.btnQuit.MouseLeave += new System.EventHandler(this.btnQuit_MouseLeave);
+            this.btnQuit.MouseHover += new System.EventHandler(this.btnQuit_MouseHover);
             // 
             // lVehiclesServed
             // 
@@ -628,6 +652,46 @@
             this.dgTransactions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTransactions.Size = new System.Drawing.Size(643, 280);
             this.dgTransactions.TabIndex = 0;
+            // 
+            // vehicleType
+            // 
+            this.vehicleType.DataPropertyName = "vehicleType";
+            this.vehicleType.HeaderText = "Type";
+            this.vehicleType.Name = "vehicleType";
+            this.vehicleType.ReadOnly = true;
+            this.vehicleType.Width = 50;
+            // 
+            // fuelTypes
+            // 
+            this.fuelTypes.DataPropertyName = "fuelTypes";
+            this.fuelTypes.HeaderText = "Fuel";
+            this.fuelTypes.Name = "fuelTypes";
+            this.fuelTypes.ReadOnly = true;
+            this.fuelTypes.Width = 80;
+            // 
+            // vehicleModel
+            // 
+            this.vehicleModel.DataPropertyName = "vehicleModel";
+            this.vehicleModel.HeaderText = "Vehicle Model";
+            this.vehicleModel.Name = "vehicleModel";
+            this.vehicleModel.ReadOnly = true;
+            this.vehicleModel.Width = 300;
+            // 
+            // litersDispensed
+            // 
+            this.litersDispensed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.litersDispensed.DataPropertyName = "numberLiters";
+            this.litersDispensed.HeaderText = "Number of liters";
+            this.litersDispensed.Name = "litersDispensed";
+            this.litersDispensed.ReadOnly = true;
+            // 
+            // payment
+            // 
+            this.payment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.payment.DataPropertyName = "paymentAmount";
+            this.payment.HeaderText = "Payment";
+            this.payment.Name = "payment";
+            this.payment.ReadOnly = true;
             // 
             // btnUpdateTransactions
             // 
@@ -971,68 +1035,11 @@
             this.Pump6.Size = new System.Drawing.Size(305, 46);
             this.Pump6.TabIndex = 23;
             // 
-            // vehicleType
+            // UpdateCLI
             // 
-            this.vehicleType.DataPropertyName = "vehicleType";
-            this.vehicleType.HeaderText = "Type";
-            this.vehicleType.Name = "vehicleType";
-            this.vehicleType.ReadOnly = true;
-            this.vehicleType.Width = 50;
-            // 
-            // fuelTypes
-            // 
-            this.fuelTypes.DataPropertyName = "fuelTypes";
-            this.fuelTypes.HeaderText = "Fuel";
-            this.fuelTypes.Name = "fuelTypes";
-            this.fuelTypes.ReadOnly = true;
-            this.fuelTypes.Width = 80;
-            // 
-            // vehicleModel
-            // 
-            this.vehicleModel.DataPropertyName = "vehicleModel";
-            this.vehicleModel.HeaderText = "Vehicle Model";
-            this.vehicleModel.Name = "vehicleModel";
-            this.vehicleModel.ReadOnly = true;
-            this.vehicleModel.Width = 300;
-            // 
-            // litersDispensed
-            // 
-            this.litersDispensed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.litersDispensed.DataPropertyName = "numberLiters";
-            this.litersDispensed.HeaderText = "Number of liters";
-            this.litersDispensed.Name = "litersDispensed";
-            this.litersDispensed.ReadOnly = true;
-            // 
-            // payment
-            // 
-            this.payment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.payment.DataPropertyName = "paymentAmount";
-            this.payment.HeaderText = "Payment";
-            this.payment.Name = "payment";
-            this.payment.ReadOnly = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Gas_station.Properties.Resources.LOGOg;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnQuit
-            // 
-            this.btnQuit.Image = global::Gas_station.Properties.Resources.quitBtn;
-            this.btnQuit.Location = new System.Drawing.Point(724, 0);
-            this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(30, 23);
-            this.btnQuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnQuit.TabIndex = 5;
-            this.btnQuit.TabStop = false;
-            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
-            this.btnQuit.MouseLeave += new System.EventHandler(this.btnQuit_MouseLeave);
-            this.btnQuit.MouseHover += new System.EventHandler(this.btnQuit_MouseHover);
+            this.UpdateCLI.Enabled = true;
+            this.UpdateCLI.Interval = 400;
+            this.UpdateCLI.Tick += new System.EventHandler(this.UpdateCLI_Tick);
             // 
             // Form1
             // 
@@ -1063,7 +1070,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Petrol Truly Unlimited";
             this.Pump1.ResumeLayout(false);
             this.Pump1.PerformLayout();
             this.NumberPanel1.ResumeLayout(false);
@@ -1082,8 +1089,10 @@
             this.NumberPanel3.PerformLayout();
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.quitPanel.ResumeLayout(false);
             this.quitPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).EndInit();
             this.transactionsPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgTransactions)).EndInit();
@@ -1110,8 +1119,6 @@
             this.NumberPanel6.PerformLayout();
             this.Pump6.ResumeLayout(false);
             this.Pump6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnQuit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1200,5 +1207,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vehicleModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn litersDispensed;
         private System.Windows.Forms.DataGridViewTextBoxColumn payment;
+        private System.Windows.Forms.Timer UpdateCLI;
     }
 }

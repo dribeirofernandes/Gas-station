@@ -180,11 +180,21 @@ namespace Gas_station
                 UpdatePanel(true, pump[8], Pump9, NumberPanel9, PumpNumber9, vehicleName9, CurrentFuel9);
         }
 
-        void UpdatePanel(bool availability, Station objectPump, Panel pump, Panel NumberPanel, Label PumpNumber, Label VehicleName, Label CurrentFuel)
+        /// <summary>
+        /// Updates UI elements according to gas station pump availability.
+        /// </summary>
+        /// <param name="availability">Pump availability</param>
+        /// <param name="objectPump">Pump object</param>
+        /// <param name="pumpPanel">Pump Panel </param>
+        /// <param name="NumberPanel"></param>
+        /// <param name="PumpNumber"></param>
+        /// <param name="VehicleName"></param>
+        /// <param name="CurrentFuel"></param>
+        void UpdatePanel(bool availability, Station objectPump, Panel pumpPanel, Panel NumberPanel, Label PumpNumber, Label VehicleName, Label CurrentFuel)
         {
             if (!availability)
             {
-                pump.BackColor = Color.FromArgb(226, 182, 179);
+                pumpPanel.BackColor = Color.FromArgb(226, 182, 179);
                 NumberPanel.BackColor = Color.FromArgb(232, 157, 153);
                 PumpNumber.ForeColor = Color.FromArgb(199, 68, 63);
                 PumpNumber.BackColor = Color.FromArgb(232, 157, 153);
@@ -194,14 +204,13 @@ namespace Gas_station
             }
             else
             {
-                pump.BackColor = Color.FromArgb(163, 207, 236);
+                pumpPanel.BackColor = Color.FromArgb(163, 207, 236);
                 NumberPanel.BackColor = Color.FromArgb(100, 177, 228);
                 PumpNumber.ForeColor = Color.FromArgb(0, 105, 165);
                 PumpNumber.BackColor = Color.FromArgb(100, 177, 228);
                 VehicleName.Text = "Available";
                 CurrentFuel.Hide();
             }
-
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -218,6 +227,26 @@ namespace Gas_station
         private void btnQuit_MouseHover(object sender, EventArgs e)
         {
             btnQuit.Image = Properties.Resources.quitButton;
+        }
+
+        private void UpdateCLI_Tick(object sender, EventArgs e)
+        {
+            Console.Clear();
+            for (int i = 2; i >= 0; i--)
+                Console.Write($"********{i + 1}{(pump[i].Availability == true ? " Available" : " Unavailable")}");
+            Console.WriteLine();
+            for (int i = 5; i >= 3; i--)
+                Console.Write($"********{i + 1}{(pump[i].Availability == true ? " Available" : " Unavailable")}");
+            Console.WriteLine();
+            for (int i = 8; i >= 6; i--)
+                Console.Write($"********{i + 1}{(pump[i].Availability == true ? " Available" : " Unavailable")}");
+            Console.WriteLine("\n");
+
+            //Update command line counters
+            Console.WriteLine($"Vehicles in queue: {queue.Count}");
+            Console.WriteLine(lPoundsGenerated.Text);
+            Console.WriteLine(lCommission.Text);
+            Console.WriteLine(lVehiclesServed.Text);
         }
     }
 }

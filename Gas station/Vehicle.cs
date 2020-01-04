@@ -27,6 +27,7 @@ namespace Gas_station
             ID = id;
             VehicleType = vehicleType;
             Random random = new Random();
+
             switch (vehicleType.ToUpper())
             {
                 case "CAR":
@@ -48,7 +49,6 @@ namespace Gas_station
                     FuelCapacity = 150;
                     CurrentFuel = random.Next(FuelCapacity / 4);
                     ModelName = modelNames[2, random.Next(5)];
-
                     break;
 
             }
