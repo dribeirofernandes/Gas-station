@@ -32,6 +32,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.UpdateInterface = new System.Windows.Forms.Timer(this.components);
             this.Pump1 = new System.Windows.Forms.Panel();
+            this.lane1 = new System.Windows.Forms.Label();
             this.CurrentFuel1 = new System.Windows.Forms.Label();
             this.vehicleName1 = new System.Windows.Forms.Label();
             this.NumberPanel1 = new System.Windows.Forms.Panel();
@@ -39,6 +40,7 @@
             this.queueList = new System.Windows.Forms.TextBox();
             this.lTotalDispensed = new System.Windows.Forms.Label();
             this.Pump2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.CurrentFuel2 = new System.Windows.Forms.Label();
             this.vehicleName2 = new System.Windows.Forms.Label();
             this.NumberPanel2 = new System.Windows.Forms.Panel();
@@ -47,11 +49,13 @@
             this.SpawnVehicle = new System.Windows.Forms.Timer(this.components);
             this.AssignPump = new System.Windows.Forms.Timer(this.components);
             this.Pump4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.CurrentFuel4 = new System.Windows.Forms.Label();
             this.vehicleName4 = new System.Windows.Forms.Label();
             this.NumberPanel4 = new System.Windows.Forms.Panel();
             this.PumpNumber4 = new System.Windows.Forms.Label();
             this.Pump3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.CurrentFuel3 = new System.Windows.Forms.Label();
             this.vehicleName3 = new System.Windows.Forms.Label();
             this.NumberPanel3 = new System.Windows.Forms.Panel();
@@ -91,27 +95,33 @@
             this.vehicleName9 = new System.Windows.Forms.Label();
             this.CurrentFuel9 = new System.Windows.Forms.Label();
             this.Pump9 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.NumberPanel7 = new System.Windows.Forms.Panel();
             this.PumpNumber7 = new System.Windows.Forms.Label();
             this.vehicleName7 = new System.Windows.Forms.Label();
             this.CurrentFuel7 = new System.Windows.Forms.Label();
             this.Pump7 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.NumberPanel8 = new System.Windows.Forms.Panel();
             this.PumpNumber8 = new System.Windows.Forms.Label();
             this.vehicleName8 = new System.Windows.Forms.Label();
             this.CurrentFuel8 = new System.Windows.Forms.Label();
             this.Pump8 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.NumberPanel5 = new System.Windows.Forms.Panel();
             this.PumpNumber5 = new System.Windows.Forms.Label();
             this.vehicleName5 = new System.Windows.Forms.Label();
             this.CurrentFuel5 = new System.Windows.Forms.Label();
             this.Pump5 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.NumberPanel6 = new System.Windows.Forms.Panel();
             this.PumpNumber6 = new System.Windows.Forms.Label();
             this.vehicleName6 = new System.Windows.Forms.Label();
             this.CurrentFuel6 = new System.Windows.Forms.Label();
             this.Pump6 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.UpdateCLI = new System.Windows.Forms.Timer(this.components);
+            this.PumpAvailable = new System.Windows.Forms.Timer(this.components);
             this.Pump1.SuspendLayout();
             this.NumberPanel1.SuspendLayout();
             this.Pump2.SuspendLayout();
@@ -154,12 +164,13 @@
             // UpdateInterface
             // 
             this.UpdateInterface.Enabled = true;
-            this.UpdateInterface.Interval = 1;
+            this.UpdateInterface.Interval = 50;
             this.UpdateInterface.Tick += new System.EventHandler(this.UpdateInterface_Tick);
             // 
             // Pump1
             // 
             this.Pump1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(207)))), ((int)(((byte)(236)))));
+            this.Pump1.Controls.Add(this.lane1);
             this.Pump1.Controls.Add(this.CurrentFuel1);
             this.Pump1.Controls.Add(this.vehicleName1);
             this.Pump1.Controls.Add(this.NumberPanel1);
@@ -167,6 +178,17 @@
             this.Pump1.Name = "Pump1";
             this.Pump1.Size = new System.Drawing.Size(305, 46);
             this.Pump1.TabIndex = 7;
+            // 
+            // lane1
+            // 
+            this.lane1.AutoSize = true;
+            this.lane1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lane1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.lane1.Location = new System.Drawing.Point(232, 4);
+            this.lane1.Name = "lane1";
+            this.lane1.Size = new System.Drawing.Size(43, 13);
+            this.lane1.TabIndex = 12;
+            this.lane1.Text = "Lane 1";
             // 
             // CurrentFuel1
             // 
@@ -238,6 +260,7 @@
             // Pump2
             // 
             this.Pump2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump2.Controls.Add(this.label1);
             this.Pump2.Controls.Add(this.CurrentFuel2);
             this.Pump2.Controls.Add(this.vehicleName2);
             this.Pump2.Controls.Add(this.NumberPanel2);
@@ -245,6 +268,17 @@
             this.Pump2.Name = "Pump2";
             this.Pump2.Size = new System.Drawing.Size(305, 46);
             this.Pump2.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label1.Location = new System.Drawing.Point(233, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Lane 1";
             // 
             // CurrentFuel2
             // 
@@ -314,6 +348,7 @@
             // Pump4
             // 
             this.Pump4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump4.Controls.Add(this.label3);
             this.Pump4.Controls.Add(this.CurrentFuel4);
             this.Pump4.Controls.Add(this.vehicleName4);
             this.Pump4.Controls.Add(this.NumberPanel4);
@@ -321,6 +356,17 @@
             this.Pump4.Name = "Pump4";
             this.Pump4.Size = new System.Drawing.Size(305, 46);
             this.Pump4.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label3.Location = new System.Drawing.Point(233, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Lane 2";
             // 
             // CurrentFuel4
             // 
@@ -368,6 +414,7 @@
             // Pump3
             // 
             this.Pump3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump3.Controls.Add(this.label2);
             this.Pump3.Controls.Add(this.CurrentFuel3);
             this.Pump3.Controls.Add(this.vehicleName3);
             this.Pump3.Controls.Add(this.NumberPanel3);
@@ -375,6 +422,17 @@
             this.Pump3.Name = "Pump3";
             this.Pump3.Size = new System.Drawing.Size(305, 46);
             this.Pump3.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label2.Location = new System.Drawing.Point(232, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Lane 1";
             // 
             // CurrentFuel3
             // 
@@ -572,11 +630,11 @@
             // 
             this.lPoundsGenerated.AutoSize = true;
             this.lPoundsGenerated.ForeColor = System.Drawing.SystemColors.Control;
-            this.lPoundsGenerated.Location = new System.Drawing.Point(142, 15);
+            this.lPoundsGenerated.Location = new System.Drawing.Point(155, 15);
             this.lPoundsGenerated.Name = "lPoundsGenerated";
-            this.lPoundsGenerated.Size = new System.Drawing.Size(114, 13);
+            this.lPoundsGenerated.Size = new System.Drawing.Size(102, 13);
             this.lPoundsGenerated.TabIndex = 2;
-            this.lPoundsGenerated.Text = "Pounds Generated: £0";
+            this.lPoundsGenerated.Text = "Profit Generated: £0";
             // 
             // lQueue
             // 
@@ -801,7 +859,7 @@
             this.CurrentFuel9.AutoSize = true;
             this.CurrentFuel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentFuel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.CurrentFuel9.Location = new System.Drawing.Point(554, 14);
+            this.CurrentFuel9.Location = new System.Drawing.Point(557, 14);
             this.CurrentFuel9.Name = "CurrentFuel9";
             this.CurrentFuel9.Size = new System.Drawing.Size(71, 20);
             this.CurrentFuel9.TabIndex = 11;
@@ -810,6 +868,7 @@
             // Pump9
             // 
             this.Pump9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump9.Controls.Add(this.label8);
             this.Pump9.Controls.Add(this.CurrentFuel9);
             this.Pump9.Controls.Add(this.vehicleName9);
             this.Pump9.Controls.Add(this.NumberPanel9);
@@ -817,6 +876,17 @@
             this.Pump9.Name = "Pump9";
             this.Pump9.Size = new System.Drawing.Size(631, 46);
             this.Pump9.TabIndex = 26;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label8.Location = new System.Drawing.Point(559, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Lane 3";
             // 
             // NumberPanel7
             // 
@@ -865,6 +935,7 @@
             // 
             this.Pump7.AutoSize = true;
             this.Pump7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump7.Controls.Add(this.label6);
             this.Pump7.Controls.Add(this.CurrentFuel7);
             this.Pump7.Controls.Add(this.vehicleName7);
             this.Pump7.Controls.Add(this.NumberPanel7);
@@ -872,6 +943,17 @@
             this.Pump7.Name = "Pump7";
             this.Pump7.Size = new System.Drawing.Size(305, 46);
             this.Pump7.TabIndex = 24;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label6.Location = new System.Drawing.Point(232, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Lane 3";
             // 
             // NumberPanel8
             // 
@@ -919,6 +1001,7 @@
             // Pump8
             // 
             this.Pump8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump8.Controls.Add(this.label7);
             this.Pump8.Controls.Add(this.CurrentFuel8);
             this.Pump8.Controls.Add(this.vehicleName8);
             this.Pump8.Controls.Add(this.NumberPanel8);
@@ -926,6 +1009,17 @@
             this.Pump8.Name = "Pump8";
             this.Pump8.Size = new System.Drawing.Size(305, 46);
             this.Pump8.TabIndex = 25;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label7.Location = new System.Drawing.Point(233, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Lane 3";
             // 
             // NumberPanel5
             // 
@@ -973,6 +1067,7 @@
             // Pump5
             // 
             this.Pump5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump5.Controls.Add(this.label4);
             this.Pump5.Controls.Add(this.CurrentFuel5);
             this.Pump5.Controls.Add(this.vehicleName5);
             this.Pump5.Controls.Add(this.NumberPanel5);
@@ -980,6 +1075,17 @@
             this.Pump5.Name = "Pump5";
             this.Pump5.Size = new System.Drawing.Size(305, 46);
             this.Pump5.TabIndex = 22;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label4.Location = new System.Drawing.Point(232, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Lane 2";
             // 
             // NumberPanel6
             // 
@@ -1027,6 +1133,7 @@
             // Pump6
             // 
             this.Pump6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(182)))), ((int)(((byte)(179)))));
+            this.Pump6.Controls.Add(this.label5);
             this.Pump6.Controls.Add(this.CurrentFuel6);
             this.Pump6.Controls.Add(this.vehicleName6);
             this.Pump6.Controls.Add(this.NumberPanel6);
@@ -1035,11 +1142,28 @@
             this.Pump6.Size = new System.Drawing.Size(305, 46);
             this.Pump6.TabIndex = 23;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label5.Location = new System.Drawing.Point(233, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Lane 2";
+            // 
             // UpdateCLI
             // 
             this.UpdateCLI.Enabled = true;
             this.UpdateCLI.Interval = 400;
             this.UpdateCLI.Tick += new System.EventHandler(this.UpdateCLI_Tick);
+            // 
+            // PumpAvailable
+            // 
+            this.PumpAvailable.Enabled = true;
+            this.PumpAvailable.Interval = 1;
+            this.PumpAvailable.Tick += new System.EventHandler(this.PumpAvailable_Tick);
             // 
             // Form1
             // 
@@ -1208,5 +1332,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn litersDispensed;
         private System.Windows.Forms.DataGridViewTextBoxColumn payment;
         private System.Windows.Forms.Timer UpdateCLI;
+        private System.Windows.Forms.Label lane1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer PumpAvailable;
     }
 }

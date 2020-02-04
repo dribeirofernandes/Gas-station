@@ -55,6 +55,7 @@ namespace Gas_station
             progressB[7] = progressBar8;
             progressB[8] = progressBar9;
 
+            DoubleBuffered = true;
         }
 
         private void SpawnVehicle_Tick(object sender, EventArgs e)
@@ -81,7 +82,7 @@ namespace Gas_station
 
         private void AssignPump_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < pump.Length; i++)
+            for (int i = 8; i >= 0; i--)
             {
                 if (pump[i].Availability == true && queue.Count > 0)
                 {
@@ -125,7 +126,7 @@ namespace Gas_station
 
             //Update top counters
             lQueue.Text = $"Queue - {queue.Count}";
-            lPoundsGenerated.Text = $"Pounds Generated: £{(double.Parse(Regex.Match(lTotalDispensed.Text, @"-?\d+(?:\.\d+)?").Value) * 1.19).ToString()}";
+            lPoundsGenerated.Text = $"Profit Generated: £{(double.Parse(Regex.Match(lTotalDispensed.Text, @"-?\d+(?:\.\d+)?").Value) * 1.19).ToString()}";
             string pdsGenerated = Regex.Match(lPoundsGenerated.Text, @"-?\d+(?:\.\d+)?").Value;
             lCommission.Text = $"Commission: £{(double.Parse(pdsGenerated) * 0.01).ToString()}";
             lVehiclesServed.Text = $"Vehicles Serviced: {vehicleID}";
@@ -247,6 +248,29 @@ namespace Gas_station
             Console.WriteLine(lPoundsGenerated.Text);
             Console.WriteLine(lCommission.Text);
             Console.WriteLine(lVehiclesServed.Text);
+        }
+
+        private void PumpAvailable_Tick(object sender, EventArgs e)
+        {
+            pump[1].Availability = pump[0].Availability == true && pump[1].vehicleName == null ? true : false;
+            pump[2].Availability = pump[0].Availability && pump[1].Availability == true && pump[2].vehicleName == null ? true : false;
+            pump[4].Availability = pump[3].Availability == true && pump[4].vehicleName == null ? true : false;
+            pump[5].Availability = pump[3].Availability && pump[4].Availability == true && pump[5].vehicleName == null ? true : false;
+            pump[7].Availability = pump[6].Availability == true && pump[7].vehicleName == null ? true : false;
+            pump[8].Availability = pump[6].Availability && pump[7].Availability == true && pump[8].vehicleName == null ? true : false;
+
+            if (pump[1].Availability == false && pump[1].vehicleName == null && vehicleName2.Text != "Lane Blocked")
+                vehicleName2.Text = "Lane Blocked";
+            if (pump[2].Availability == false && pump[2].vehicleName == null && vehicleName3.Text != "Lane Blocked")
+                vehicleName3.Text = "Lane Blocked";
+            if (pump[4].Availability == false && pump[4].vehicleName == null && vehicleName5.Text != "Lane Blocked")
+                vehicleName5.Text = "Lane Blocked";
+            if (pump[5].Availability == false && pump[5].vehicleName == null && vehicleName6.Text != "Lane Blocked")
+                vehicleName6.Text = "Lane Blocked";
+            if (pump[7].Availability == false && pump[7].vehicleName == null && vehicleName8.Text != "Lane Blocked")
+                vehicleName8.Text = "Lane Blocked";
+            if (pump[7].Availability == false && pump[8].vehicleName == null && vehicleName9.Text != "Lane Blocked")
+                vehicleName9.Text = "Lane Blocked";
         }
     }
 }

@@ -77,6 +77,7 @@ namespace Gas_station
             progressbar.Invoke((MethodInvoker)(() => progressbar.Value = 0));
             transactionsTable.Rows.Add(new object[] { $"{vehicle.VehicleType}", $"{vehicle.FuelType}", $"{vehicle.ModelName}", $"{SessionDispensed}L", $"£{SessionDispensed * Fuelprice}" });
             SessionDispensed = 0;
+            vehicleName = null;
             Availability = true;
         }
     }
