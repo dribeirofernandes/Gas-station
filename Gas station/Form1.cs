@@ -86,7 +86,7 @@ namespace Gas_station
             {
                 if (pump[i].Availability == true && queue.Count > 0)
                 {
-                    var thread = new Thread(() => pump[i].StartPump(queue, transactions, fuelDispensed, progressB[i], lTotalDispensed));
+                    var thread = new Thread(() => pump[i].Start(queue, transactions, fuelDispensed, progressB[i], lTotalDispensed));
                     thread.Start();
                     Thread.Sleep(50);
                 }
@@ -199,9 +199,9 @@ namespace Gas_station
                 NumberPanel.BackColor = Color.FromArgb(232, 157, 153);
                 PumpNumber.ForeColor = Color.FromArgb(199, 68, 63);
                 PumpNumber.BackColor = Color.FromArgb(232, 157, 153);
-                VehicleName.Text = objectPump.vehicleName;
+                VehicleName.Text = objectPump.VehicleModel();
                 CurrentFuel.Show();
-                CurrentFuel.Text = objectPump.fuelComparison;
+                CurrentFuel.Text = objectPump.FuelComparison;
             }
             else
             {
@@ -252,24 +252,24 @@ namespace Gas_station
 
         private void PumpAvailable_Tick(object sender, EventArgs e)
         {
-            pump[1].Availability = pump[0].Availability == true && pump[1].vehicleName == null ? true : false;
-            pump[2].Availability = pump[0].Availability && pump[1].Availability == true && pump[2].vehicleName == null ? true : false;
-            pump[4].Availability = pump[3].Availability == true && pump[4].vehicleName == null ? true : false;
-            pump[5].Availability = pump[3].Availability && pump[4].Availability == true && pump[5].vehicleName == null ? true : false;
-            pump[7].Availability = pump[6].Availability == true && pump[7].vehicleName == null ? true : false;
-            pump[8].Availability = pump[6].Availability && pump[7].Availability == true && pump[8].vehicleName == null ? true : false;
+            pump[1].Availability = pump[0].Availability == true && pump[1].VehicleModel() == null ? true : false;
+            pump[2].Availability = pump[0].Availability && pump[1].Availability == true && pump[2].VehicleModel() == null ? true : false;
+            pump[4].Availability = pump[3].Availability == true && pump[4].VehicleModel() == null ? true : false;
+            pump[5].Availability = pump[3].Availability && pump[4].Availability == true && pump[5].VehicleModel() == null ? true : false;
+            pump[7].Availability = pump[6].Availability == true && pump[7].VehicleModel() == null ? true : false;
+            pump[8].Availability = pump[6].Availability && pump[7].Availability == true && pump[8].VehicleModel() == null ? true : false;
 
-            if (pump[1].Availability == false && pump[1].vehicleName == null && vehicleName2.Text != "Lane Blocked")
+            if (pump[1].Availability == false && pump[1].VehicleModel() == null && vehicleName2.Text != "Lane Blocked")
                 vehicleName2.Text = "Lane Blocked";
-            if (pump[2].Availability == false && pump[2].vehicleName == null && vehicleName3.Text != "Lane Blocked")
+            if (pump[2].Availability == false && pump[2].VehicleModel() == null && vehicleName3.Text != "Lane Blocked")
                 vehicleName3.Text = "Lane Blocked";
-            if (pump[4].Availability == false && pump[4].vehicleName == null && vehicleName5.Text != "Lane Blocked")
+            if (pump[4].Availability == false && pump[4].VehicleModel() == null && vehicleName5.Text != "Lane Blocked")
                 vehicleName5.Text = "Lane Blocked";
-            if (pump[5].Availability == false && pump[5].vehicleName == null && vehicleName6.Text != "Lane Blocked")
+            if (pump[5].Availability == false && pump[5].VehicleModel() == null && vehicleName6.Text != "Lane Blocked")
                 vehicleName6.Text = "Lane Blocked";
-            if (pump[7].Availability == false && pump[7].vehicleName == null && vehicleName8.Text != "Lane Blocked")
+            if (pump[7].Availability == false && pump[7].VehicleModel() == null && vehicleName8.Text != "Lane Blocked")
                 vehicleName8.Text = "Lane Blocked";
-            if (pump[7].Availability == false && pump[8].vehicleName == null && vehicleName9.Text != "Lane Blocked")
+            if (pump[7].Availability == false && pump[8].VehicleModel() == null && vehicleName9.Text != "Lane Blocked")
                 vehicleName9.Text = "Lane Blocked";
         }
     }
